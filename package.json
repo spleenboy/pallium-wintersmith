@@ -1,0 +1,14 @@
+{
+  "name": "pallium-wintersmith",
+  "version": "0.0.0",
+  "description": "Pallium plugin for Wintersmith site generation",
+  "main": "register.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "@spleenboy",
+  "license": "ISC",
+  "dependencies": {
+    "wintersmith": "^2.2.0"
+  }
+}
