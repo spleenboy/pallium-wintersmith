@@ -17,18 +17,7 @@ util.inherits(Controller, Parent);
 
 
 Controller.prototype.preview = function() {
-    env.preview(function(error, server) {
-        if (error) {
-            log.error('Error previewing wintersmith site', error);
-        }
-        else {
-            log.info('Wintersmith preview started!');
-        }
-    });
-
-    var data = {
-        'wintersmith' : env.locals
-    };
+    var data = {'wintersmith' : env.locals};
     this.send('preview', data);
 };
 
