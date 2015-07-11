@@ -1,9 +1,10 @@
 var util = require('util');
 var wintersmith = require('wintersmith');
 
-var Parent = plugin('controllers/controller');
-var config = plugin('config');
-var log    = plugin('services/log')(module);
+var plugins = require(process.cwd() + '/app/services/plugins');
+var Parent = plugins.require('controllers/controller');
+var config = plugins.require('config');
+var log    = plugins.require('services/log')(module);
 
 var base = process.cwd() + '/plugins/wintersmith/';
 var env  = wintersmith(config.get('wintersmith.configPath'));

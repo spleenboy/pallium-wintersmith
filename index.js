@@ -1,9 +1,10 @@
 var path = require('path');
 var wintersmith = require('wintersmith');
 
-var View   = plugin('views/view');
-var log    = plugin('services/log')(module);
-var config = plugin('config');
+var plugins = require(process.cwd() + '/app/services/plugins');
+var View   = plugins.require('views/view');
+var log    = plugins.require('services/log')(module);
+var config = plugins.require('config');
 
 var router = require('./router');
 var id = 'wintersmith';
