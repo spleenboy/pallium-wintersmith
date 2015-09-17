@@ -34,7 +34,11 @@ module.exports = function(hooks, app) {
 
     // Add menu items
     hooks.on('app/controllers/controller/populating', function(event) {
-        var data = {'wintersmith' : env.locals};
+        var data = {wintersmith: {
+            locals: env.locals,
+            config: env.config,
+            mode: env.mode
+        }};
         var view = new View('menu', data);
         view.base = path.join(__dirname, 'views');
         var content = view.render();
