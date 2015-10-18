@@ -5,6 +5,7 @@ var plugins = require(process.cwd() + '/app/services/plugins');
 var Parent = plugins.require('controllers/controller');
 var config = plugins.require('config');
 var log    = plugins.require('services/log')(module);
+var hooks  = plugins.require('services/hooks');
 
 var base = process.cwd() + '/plugins/wintersmith/';
 var env  = wintersmith(config.get('wintersmith.configPath'));
@@ -12,6 +13,9 @@ var env  = wintersmith(config.get('wintersmith.configPath'));
 function Controller() {
     Parent.call(this);
     this.viewBase = base + 'views';
+    hooks.bubble(module, this, [
+        'published'
+    ]);
 }
 
 util.inherits(Controller, Parent);
@@ -32,6 +36,7 @@ Controller.prototype.publish = function() {
             log.info('Wintersmith build complete!');
         }
     });
+    this.emit('published');
     this.send('publish');
 };
 
