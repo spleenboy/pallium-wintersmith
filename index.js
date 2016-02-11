@@ -12,7 +12,7 @@ var id = 'wintersmith';
 module.exports = function(hooks, app) {
     var env  = wintersmith(config.get('wintersmith.configPath'));
     var base = process.cwd() + '/plugins/wintersmith/';
-    var cast = app.io.broadcast.bind(app.io, 'flash');
+    var cast = app.io.emit.bind(app.io, 'flash');
 
     // Start up the preview site
     process.nextTick(function() {
